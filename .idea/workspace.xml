@@ -22,7 +22,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c4d43c86-9591-473d-a819-0ecaa2a0f4dc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tareas/Tarea 3/B.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tareas/Tarea 3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Tareas/Tarea 3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,8 @@
       <workItem from="1664541650514" duration="33000" />
       <workItem from="1664543937338" duration="51000" />
       <workItem from="1664544945901" duration="60000" />
-      <workItem from="1664545581653" duration="1000" />
+      <workItem from="1664545581653" duration="55000" />
+      <workItem from="1664581527636" duration="49000" />
     </task>
     <servers />
   </component>
