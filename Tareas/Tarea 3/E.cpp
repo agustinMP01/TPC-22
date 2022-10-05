@@ -32,7 +32,7 @@ int main(){
     //Rellenamos la dp
     //dif es la diferencia entre i y j
     for (int dif = 1; dif < n; dif++){ //Calcula solo hasta los ultimos 2 casos, el cacho derecho superior no lo calcula
-        for (int i = 0; i <= n-dif; i++){
+        for (int i = 0; i < n-dif; i++){
             int j = i + dif;
 
             //Puntaje del primer jugador
