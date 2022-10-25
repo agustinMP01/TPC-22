@@ -5,6 +5,8 @@
         "numeric": "cpp",
         "array": "cpp",
         "variant": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "algorithm": "cpp",
+        "chrono": "cpp"
     }
 }
