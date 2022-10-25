@@ -21,7 +21,6 @@ struct SegmentTree{
   }
 
   T merge(T a, T b){ // Reemplazar esta funcion para determinar como juntar dos nodos para obtener el valor de su padre, en este caso es suma
-    // e
     return a + b;
   }
   
@@ -123,27 +122,39 @@ int main(){
     cin >> n;
     int k;
     cin >> k;
+    int temp = k + 1;
+
     vector<int> a(n);
-    for (int i=0;i<n;i++) a[i] = 1; // lleno
+
+    for (int i=0;i<n;i++) {
+        a[i] = 1;
+    } // lleno el vector
+
     SegmentTree<int> st(a); // crear segment tree con el vector a
+
     int pos = 0;
-    k += 1;
     int q = 0;
-    for(int i = n; i>1; i--){
-    k = k%i; // arreglar la cantidad de saltos
-    int l; // donde esta la posicion
-    if ( st.query(pos,n-1) < k){ 
-        q = st.query(pos,n-1);
-        l = st.search(pos,k-q);
-    }
-    else{
-        l = st.search(pos,k); // indice donde esta mi respuesta
-    } 
-    pos += k;
-    pos = pos%i;
-    l += 1; // el valor 
-    cout << l << '\n';
-    st.update(l-1,0);
+
+    for(int i = n; i>=1; i--){
+        k = temp;
+        k = k%i; // arreglar la cantidad de saltos
+
+        if (k==0) {
+            k=i;
+        }    
+        int l; // donde esta la posicion
+        if ( st.query(pos,n-1) < k){ 
+            q = st.query(pos,n-1);
+            k -= q;
+            pos = 0;
+            
+        }
+
+        l = st.search(pos,k);
+        pos = l;
+        l += 1; // el valor 
+        cout << l << '\n';
+        st.update(l-1,0);
     }
     return 0;
 }
