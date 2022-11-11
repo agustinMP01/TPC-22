@@ -2,23 +2,18 @@
 
 using namespace std;
 
-void computeLPSArray(string pat, int M, int* lps);
+void LPS(string pat, int M, int* lps);
  
-// Prints occurrences of txt[] in pat[]
-void KMPSearch(string pat, string txt)
-{
+void KMP(string pat, string txt) {
     int M = pat.size();
     int N = txt.size();
  
-    // create lps[] that will hold the longest prefix suffix
-    // values for pattern
     int lps[M];
  
-    // Preprocess the pattern (calculate lps[] array)
-    computeLPSArray(pat, M, lps);
+    LPS(pat, M, lps);
  
-    int i = 0; // index for txt[]
-    int j = 0; // index for pat[]
+    int i = 0; 
+    int j = 0; 
     while ((N - i) >= (M - j)) {
         if (pat[j] == txt[i]) {
             j++;
@@ -30,66 +25,51 @@ void KMPSearch(string pat, string txt)
             j = lps[j - 1];
         }
  
-        // mismatch after j matches
         else if (i < N && pat[j] != txt[i]) {
-            // Do not match lps[0..lps[j-1]] characters,
-            // they will match anyway
-            if (j != 0)
+
+            if (j != 0) {
                 j = lps[j - 1];
-            else
+            } else {
                 i = i + 1;
+            }
         }
     }
 }
  
-// Fills lps[] for given pattern pat[0..M-1]
-void computeLPSArray(string pat, int M, int* lps)
-{
-    // length of the previous longest prefix suffix
+void LPS(string pat, int M, int* lps) {
     int len = 0;
  
-    lps[0] = 0; // lps[0] is always 0
- 
-    // the loop calculates lps[i] for i = 1 to M-1
+    lps[0] = 0;
+
     int i = 1;
     while (i < M) {
         if (pat[i] == pat[len]) {
             len++;
             lps[i] = len;
             i++;
-        }
-        else // (pat[i] != pat[len])
-        {
-            // This is tricky. Consider the example.
-            // AAACAAAA and i = 7. The idea is similar
-            // to search step.
+        } else {
             if (len != 0) {
                 len = lps[len - 1];
- 
-                // Also, note that we do not increment
-                // i here
-            }
-            else // if (len == 0)
-            {
+            }else {
                 lps[i] = 0;
                 i++;
             }
         }
     }
 }
- 
-// Driver program to test above function
-int main() {
-    int len;    
-    cin >> len;
 
+int main() {
+    int len;
+    while(cin >> len) {
+ 
     string pat;
     cin >> pat;
-
 
     string txt;
     cin >> txt;
 
-    KMPSearch(pat, txt);
+    KMP(pat, txt);
+    cout << " \n";
+    }
     return 0;
 }
